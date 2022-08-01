@@ -1,19 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
+import dayjs from 'dayjs'
 import { Chip, IconButton, Grid, TextField, Container } from '@mui/material'
 
 export default function Index() {
   const [searchText, setSearchText] = useState('shit')
   const [link, setLink] = useState('https://www.google.com/search?q=')
+  const [clock, setClock] = useState(dayjs().unix())
   const onKeyPress = (e) => {
     if (e.key === 'Enter') {
       window.open(`${link}${searchText}`)
     }
   }
 
+  useEffect(() => {
+    setInterval(() => {
+      setClock(dayjs().unix())
+    }, 1000)
+  }, [])
+
   return (
-    <Container maxWidth="sm" className="pt-64">
-      <Grid container>
+    <Container maxWidth="sm">
+      <div className="pt-32 text-center	text-9xl text-stone-500">{dayjs(clock * 1000).format('hh:mm:ss')}</div>
+      <Grid container className="pt-12">
         <Grid item xs={12}>
           <Chip
             size="small"
