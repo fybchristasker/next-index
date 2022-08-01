@@ -4,27 +4,55 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
+    "build": "next build",
+    "analyze": "ANALYZE=true next build",
+    "format": "prettier --write './**/*.{js,jsx,css,html}'",
     "lint": "next lint",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+    "lint:js": "yarn eslint --quiet --cache --ext .js,.jsx,.ts,.tsx --format=pretty",
+    "lint:js:all": "yarn lint:js .",
+    "fix-css": "npx stylelint '**/*.css' --fix",
+    "lint:style": "stylelint '**/*.css'"
+  },
+  "lint-staged": {
+    "**/*.less": [
+      "yarn lint:style:fix"
+    ],
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --format=pretty"
+    ],
+    "**/*.{js,jsx,tsx,ts,md,json}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
-    "@emotion/cache": "latest",
-    "@emotion/react": "latest",
-    "@emotion/server": "latest",
-    "@emotion/styled": "latest",
-    "@mui/icons-material": "latest",
-    "@mui/material": "latest",
+    "@emotion/cache": "^11.10.0",
+    "@emotion/react": "^11.10.0",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.2",
+    "autoprefixer": "^10.4.7",
     "next": "latest",
-    "prop-types": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-media-previewer": "file:.yalc/react-media-previewer",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "tailwindcss": "^3.1.5"
   },
   "devDependencies": {
-    "eslint": "latest",
-    "eslint-config-next": "latest"
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "^12.2.3",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-formatter-pretty": "^4.1.0",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "stylelint": "^14.9.1"
   }
 }
