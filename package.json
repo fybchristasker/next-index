@@ -31,13 +31,17 @@
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.8.4",
+    "@mui/lab": "^5.0.0-alpha.93",
     "@mui/material": "^5.9.2",
     "autoprefixer": "^10.4.7",
+    "axios": "^0.27.2",
     "dayjs": "^1.11.4",
     "next": "latest",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "tailwindcss": "^3.1.5"
+    "superagent": "^8.0.0",
+    "tailwindcss": "^3.1.5",
+    "unfetch": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^8.21.0",

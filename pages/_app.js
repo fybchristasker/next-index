@@ -9,7 +9,7 @@ import '@/styles/global.css'
 
 const clientSideEmotionCache = createEmotionCache()
 
-function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }) {
+const MyApp = ({ Component, emotionCache = clientSideEmotionCache, pageProps }) => {
   return (
     <CacheProvider value={emotionCache}>
       <Head component={Component} />

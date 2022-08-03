@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import dayjs from 'dayjs'
-import { Chip, IconButton, Grid, TextField, Container } from '@mui/material'
+import { Chip, Box, IconButton, Tab, Grid, TextField, Container } from '@mui/material'
+import TabContext from '@mui/lab/TabContext'
+import TabList from '@mui/lab/TabList'
+import TabPanel from '@mui/lab/TabPanel'
+import Bilibili from '@/components/Bilibili'
+import Weibo from '@/components/Weibo'
 
-export default function Index() {
-  const [searchText, setSearchText] = useState('shit')
+const Index = () => {
+  const [searchText, setSearchText] = useState('')
   const [link, setLink] = useState('https://www.google.com/search?q=')
   const [clock, setClock] = useState(dayjs().unix())
+  const [value, setValue] = React.useState('1')
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
   const onKeyPress = (e) => {
     if (e.key === 'Enter') {
       window.open(`${link}${searchText}`)
@@ -21,8 +31,16 @@ export default function Index() {
 
   return (
     <Container maxWidth="sm">
-      <div className="pt-32 text-center	text-9xl text-stone-500">{dayjs(clock * 1000).format('hh:mm:ss')}</div>
-      <Grid container className="pt-12">
+      <div className="pt-32 text-center	text-xl text-stone-400">
+        {dayjs(clock * 1000)
+          .format('YYYY-MM-DD ddd')
+          .toUpperCase()}
+      </div>
+      <div className="mt-4 flex items-center justify-center font-bold">
+        <div className="text-center text-7xl text-stone-500 md:text-9xl">{dayjs(clock * 1000).format('h:mm:ss')}</div>
+        <div className="ml-4 text-center text-2xl text-stone-500">{dayjs(clock * 1000).format('A')}</div>
+      </div>
+      <Grid container className="mt-12">
         <Grid item xs={12}>
           <Chip
             size="small"
@@ -59,6 +77,22 @@ export default function Index() {
           />
         </Grid>
       </Grid>
+      <TabContext value={value}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="Item One" value="1" />
+            <Tab label="Item Two" value="2" />
+          </TabList>
+        </Box>
+        <TabPanel value="1">
+          <Weibo />
+        </TabPanel>
+        <TabPanel value="2">
+          <Bilibili />
+        </TabPanel>
+      </TabContext>
     </Container>
   )
 }
+
+export default Index
