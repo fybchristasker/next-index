@@ -32,7 +32,7 @@ const Index = () => {
   }, [])
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <div className="pt-32 text-center	text-xl text-stone-400">
         {dayjs(clock * 1000)
           .format('YYYY-MM-DD ddd')
@@ -81,10 +81,10 @@ const Index = () => {
       </Grid>
       <TabContext value={value}>
         <TabList onChange={handleChange} className="mb-6">
-          <Tab label="微博热搜" value="1" />
-          <Tab label="B站热搜" value="2" />
-          <Tab label="知乎热搜" value="3" />
-          <Tab label="百度热搜" value="4" />
+          <Tab label="微博热搜" value="1" icon={<img src="https://weibo.com/favicon.ico" alt="" className="h-4 w-4" />} iconPosition="start" />
+          <Tab label="B站热搜" value="2" icon={<img src="https://bilibili.com/favicon.ico" alt="" className="h-4 w-4" />} iconPosition="start" />
+          <Tab label="知乎热搜" value="3" icon={<img src="https://zhihu.com/favicon.ico" alt="" className="h-4 w-4" />} iconPosition="start" />
+          <Tab label="百度热搜" value="4" icon={<img src="https://baidu.com/favicon.ico" alt="" className="h-4 w-4" />} iconPosition="start" />
         </TabList>
         <TabPanel value="1" className="p-0">
           <Weibo />
