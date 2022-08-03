@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Grid } from '@mui/material'
-import axios from 'axios'
 
-const Baidu = () => {
-  const [baidu, setBaidu] = useState([])
-  const getZhihu = async () => {
-    await axios.get('https://tenapi.cn/baiduhot').then((res) => {
-      setBaidu(res.data.list)
-    })
-  }
-  useEffect(() => {
-    getZhihu()
-  }, [])
-
+const Baidu = ({ data }) => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        {baidu.map((v, index) => (
+        {data.map((v, index) => (
           <div key={v.url} className="mb-4 flex items-center justify-between">
-            <a href={v.url} className="flex items-center">
+            <a href={v.url} className="flex items-center" target="_blank" rel="noreferrer">
               <div className="w-6">{index + 1}</div>
               {v.name}
             </a>

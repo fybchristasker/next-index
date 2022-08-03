@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
+import axios from 'axios'
 import dayjs from 'dayjs'
 import { Chip, IconButton, Tab, Grid, TextField, Container } from '@mui/material'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
+import { useView } from '@/utils/store'
 import Bilibili from '@/components/Bilibili'
 import Weibo from '@/components/Weibo'
 import Zhihu from '@/components/Zhihu'
@@ -12,6 +14,7 @@ import Baidu from '@/components/Baidu'
 
 const Index = () => {
   const [searchText, setSearchText] = useState('')
+  const [view, viewSet] = useView()
   const [link, setLink] = useState('https://www.google.com/search?q=')
   const [clock, setClock] = useState(dayjs().unix())
   const [value, setValue] = React.useState('1')
@@ -24,11 +27,39 @@ const Index = () => {
       window.open(`${link}${searchText}`)
     }
   }
+  const getWeibo = async () => {
+    await axios.get('https://tenapi.cn/resou/', {}).then((res) => {
+      viewSet(['news', 'weibo'], res.data.list)
+    })
+  }
+  const getZhihu = async () => {
+    await axios.get('https://tenapi.cn/zhihuresou').then((res) => {
+      viewSet(['news', 'zhihu'], res.data.list)
+    })
+  }
+  const getBilibili = async () => {
+    await axios.get('https://tenapi.cn/bilihot/').then((res) => {
+      viewSet(['news', 'bilibili'], res.data.list)
+    })
+  }
+
+  const getBaidu = async () => {
+    await axios.get('https://tenapi.cn/baiduhot').then((res) => {
+      viewSet(['news', 'baidu'], res.data.list)
+    })
+  }
 
   useEffect(() => {
     setInterval(() => {
       setClock(dayjs().unix())
     }, 1000)
+  }, [])
+
+  useEffect(() => {
+    getZhihu()
+    getWeibo()
+    getBilibili()
+    getBaidu()
   }, [])
 
   return (
@@ -87,16 +118,16 @@ const Index = () => {
           <Tab label="百度热搜" value="4" icon={<img src="https://baidu.com/favicon.ico" alt="" className="h-4 w-4" />} iconPosition="start" />
         </TabList>
         <TabPanel value="1" className="p-0">
-          <Weibo />
+          <Weibo data={view.news.weibo} />
         </TabPanel>
         <TabPanel value="2" className="p-0">
-          <Bilibili />
+          <Bilibili data={view.news.bilibili} />
         </TabPanel>
         <TabPanel value="3" className="p-0">
-          <Zhihu />
+          <Zhihu data={view.news.zhihu} />
         </TabPanel>
         <TabPanel value="4" className="p-0">
-          <Baidu />
+          <Baidu data={view.news.baidu} />
         </TabPanel>
       </TabContext>
     </Container>
