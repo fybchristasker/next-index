@@ -2,27 +2,26 @@ import React, { useState, useEffect } from 'react'
 import { Grid } from '@mui/material'
 import axios from 'axios'
 
-const Weibo = () => {
-  const [weibo, setWeibo] = useState([])
-  const getWeibo = async () => {
-    await axios.get('https://tenapi.cn/resou/', {}).then((res) => {
-      setWeibo(res.data.list)
+const Zhihu = () => {
+  const [zhihu, setZhihu] = useState([])
+  const getZhihu = async () => {
+    await axios.get('https://tenapi.cn/zhihuresou').then((res) => {
+      setZhihu(res.data.list)
     })
   }
   useEffect(() => {
-    getWeibo()
+    getZhihu()
   }, [])
 
   return (
     <Grid container>
       <Grid item xs={12}>
-        {weibo.map((v, index) => (
+        {zhihu.map((v, index) => (
           <div key={v.url} className="mb-4 flex items-center justify-between">
             <a href={v.url} className="flex items-center">
               <div className="w-6">{index + 1}</div>
               {v.name}
             </a>
-            <div className="text-xs text-orange-500">{(v.hot / 10000).toFixed(1)}万</div>
           </div>
         ))}
       </Grid>
@@ -30,4 +29,4 @@ const Weibo = () => {
   )
 }
 
-export default Weibo
+export default Zhihu

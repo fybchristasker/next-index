@@ -2,21 +2,21 @@ import React, { useState, useEffect } from 'react'
 import { Grid } from '@mui/material'
 import axios from 'axios'
 
-const Weibo = () => {
-  const [weibo, setWeibo] = useState([])
-  const getWeibo = async () => {
-    await axios.get('https://tenapi.cn/resou/', {}).then((res) => {
-      setWeibo(res.data.list)
+const Baidu = () => {
+  const [baidu, setBaidu] = useState([])
+  const getZhihu = async () => {
+    await axios.get('https://tenapi.cn/baiduhot').then((res) => {
+      setBaidu(res.data.list)
     })
   }
   useEffect(() => {
-    getWeibo()
+    getZhihu()
   }, [])
 
   return (
     <Grid container>
       <Grid item xs={12}>
-        {weibo.map((v, index) => (
+        {baidu.map((v, index) => (
           <div key={v.url} className="mb-4 flex items-center justify-between">
             <a href={v.url} className="flex items-center">
               <div className="w-6">{index + 1}</div>
@@ -30,4 +30,4 @@ const Weibo = () => {
   )
 }
 
-export default Weibo
+export default Baidu

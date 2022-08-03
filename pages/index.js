@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import dayjs from 'dayjs'
-import { Chip, Box, IconButton, Tab, Grid, TextField, Container } from '@mui/material'
+import { Chip, IconButton, Tab, Grid, TextField, Container } from '@mui/material'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import Bilibili from '@/components/Bilibili'
 import Weibo from '@/components/Weibo'
+import Zhihu from '@/components/Zhihu'
+import Baidu from '@/components/Baidu'
 
 const Index = () => {
   const [searchText, setSearchText] = useState('')
@@ -78,17 +80,23 @@ const Index = () => {
         </Grid>
       </Grid>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Item One" value="1" />
-            <Tab label="Item Two" value="2" />
-          </TabList>
-        </Box>
-        <TabPanel value="1">
+        <TabList onChange={handleChange} className="mb-6">
+          <Tab label="微博热搜" value="1" />
+          <Tab label="B站热搜" value="2" />
+          <Tab label="知乎热搜" value="3" />
+          <Tab label="百度热搜" value="4" />
+        </TabList>
+        <TabPanel value="1" className="p-0">
           <Weibo />
         </TabPanel>
-        <TabPanel value="2">
+        <TabPanel value="2" className="p-0">
           <Bilibili />
+        </TabPanel>
+        <TabPanel value="3" className="p-0">
+          <Zhihu />
+        </TabPanel>
+        <TabPanel value="4" className="p-0">
+          <Baidu />
         </TabPanel>
       </TabContext>
     </Container>
