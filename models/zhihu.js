@@ -35,11 +35,6 @@ async function bootstrap() {
       if (data) {
         if (items) {
           // eslint-disable-next-line
-          for (const item of items) {
-            // eslint-disable-next-line
-            item.category = category || item.category
-          }
-          // eslint-disable-next-line
           await saveRawJson(items)
         }
       }

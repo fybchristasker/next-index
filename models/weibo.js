@@ -1,11 +1,8 @@
 const fs = require('fs-extra')
-const util = require('util')
-const cheerio = require('cheerio')
 const _ = require('lodash')
 const axios = require('axios')
 
 const TRENDING_URL = 'https://m.weibo.cn/api/container/getIndex?containerid=106003type%3D25%26t%3D3%26disable_hot%3D1%26filter_type%3Drealtimehot'
-const TRENDING_DETAIL_URL = 'https://m.s.weibo.com/topic/detail?q=%s'
 
 let RETRY_TIME = 5
 
@@ -31,19 +28,6 @@ async function saveRawJson(data) {
   await fs.writeFile(fullPath, JSON.stringify(allHots))
 }
 
-async function fetchTrendingDetail(title) {
-  try {
-    const { data } = await axios.get(util.format(TRENDING_DETAIL_URL, title))
-    const $ = cheerio.load(data)
-    return {
-      category: $('#pl_topicband dl>dd').first().text(),
-      desc: $('#pl_topicband dl:eq(1)').find('dd:not(.host-row)').last().text(),
-    }
-  } catch {
-    return {}
-  }
-}
-
 async function bootstrap() {
   while (RETRY_TIME > 0) {
     try {
@@ -52,13 +36,6 @@ async function bootstrap() {
       if (data.ok === 1) {
         const items = data.data.cards[0]?.card_group
         if (items) {
-          // eslint-disable-next-line
-          for (const item of items) {
-            // eslint-disable-next-line
-            const { category, desc } = await fetchTrendingDetail(encodeURIComponent(item.desc))
-            item.category = category || item.category
-            item.description = desc || item.description
-          }
           // eslint-disable-next-line
           await saveRawJson(items)
         }

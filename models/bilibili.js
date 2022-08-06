@@ -1,11 +1,8 @@
 const fs = require('fs-extra')
-const util = require('util')
-const cheerio = require('cheerio')
 const _ = require('lodash')
 const axios = require('axios')
 
 const TRENDING_URL = 'https://api.bilibili.com/x/web-interface/search/square?limit=50'
-const TRENDING_DETAIL_URL = 'https://m.s.weibo.com/topic/detail?q=%s'
 
 let RETRY_TIME = 5
 
@@ -29,20 +26,6 @@ async function saveRawJson(data) {
   await fs.writeFile(fullPath, JSON.stringify(allHots))
 }
 
-async function fetchTrendingDetail(title) {
-  try {
-    const { data } = await axios.get(util.format(TRENDING_DETAIL_URL, title), {
-      timeout: 10 * 1000,
-    })
-    const $ = cheerio.load(data)
-    return {
-      category: $,
-    }
-  } catch {
-    return {}
-  }
-}
-
 async function bootstrap() {
   while (RETRY_TIME > 0) {
     try {
@@ -51,12 +34,6 @@ async function bootstrap() {
       const items = data.data.trending?.list
       if (data.code === 0) {
         if (items) {
-          // eslint-disable-next-line
-          for (const item of items) {
-            // eslint-disable-next-line
-            const { category } = await fetchTrendingDetail(encodeURIComponent(item.desc))
-            item.category = category || item.category
-          }
           // eslint-disable-next-line
           await saveRawJson(items)
         }
