@@ -5,25 +5,23 @@ import { CacheProvider } from '@emotion/react'
 import { ContextProvider } from '@/utils/store'
 import Head from '@/components/Header'
 import { lightTheme } from '@/utils/theme'
-import Layout from '@/components/Layout'
-import createEmotionCache from '@/utils/createEmotionCache'
 import '@/styles/global.css'
+import createEmotionCache from '@/utils/createEmotionCache'
 
 const clientSideEmotionCache = createEmotionCache()
 
 const MyApp = ({ Component, emotionCache = clientSideEmotionCache, pageProps }) => {
   return (
     <StyledEngineProvider injectFirst>
-      <ContextProvider>
-        <CacheProvider value={emotionCache}>
-          <Head component={Component} />
+      <CacheProvider value={emotionCache}>
+        <Head component={Component} />
+        <ContextProvider>
           <ThemeProvider theme={lightTheme}>
             <CssBaseline />
-            <Layout />
             <Component {...pageProps} />
           </ThemeProvider>
-        </CacheProvider>
-      </ContextProvider>
+        </ContextProvider>
+      </CacheProvider>
     </StyledEngineProvider>
   )
 }

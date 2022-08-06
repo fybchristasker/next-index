@@ -1,7 +1,8 @@
 import React from 'react'
 import { Grid } from '@mui/material'
+import data from '@/api/bilibili'
 
-const Bilibili = ({ data }) => {
+const Bilibili = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
