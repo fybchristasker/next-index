@@ -4,10 +4,12 @@ const app = new Koa()
 
 const getWeibo = require('./models/weibo')
 const getBilibili = require('./models/bilibili')
+const getZhihu = require('./models/zhihu')
 
 app.use(async () => {
   await getWeibo()
   await getBilibili()
+  await getZhihu()
 })
 
 app.listen(9000, () => {

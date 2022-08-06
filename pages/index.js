@@ -28,11 +28,7 @@ const Index = () => {
       window.open(`${link}${searchText}`)
     }
   }
-  const getZhihu = async () => {
-    await axios.get('https://tenapi.cn/zhihuresou').then((res) => {
-      viewSet(['news', 'zhihu'], res.data.list)
-    })
-  }
+
   const getBaidu = async () => {
     await axios.get('https://tenapi.cn/baiduhot').then((res) => {
       viewSet(['news', 'baidu'], res.data.list)
@@ -46,7 +42,6 @@ const Index = () => {
   }, [])
 
   useEffect(() => {
-    getZhihu()
     getBaidu()
   }, [])
 
@@ -110,7 +105,7 @@ const Index = () => {
             <Weibo />
           </TabPanel>
           <TabPanel value="3" className="p-0">
-            <Zhihu data={view.news.zhihu} />
+            <Zhihu />
           </TabPanel>
           <TabPanel value="4" className="p-0">
             <Baidu data={view.news.baidu} />
