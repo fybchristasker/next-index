@@ -34,7 +34,6 @@ async function bootstrap() {
       const items = data.data.cards[0].content
       if (data) {
         if (items) {
-          console.info(items, 'aaaaaaa')
           // eslint-disable-next-line
           for (const item of items) {
             // eslint-disable-next-line
