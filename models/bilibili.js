@@ -2,7 +2,6 @@ const fs = require('fs-extra')
 const util = require('util')
 const cheerio = require('cheerio')
 const _ = require('lodash')
-const schedule = require('node-schedule')
 const axios = require('axios')
 
 const TRENDING_URL = 'https://api.bilibili.com/x/web-interface/search/square?limit=50'
@@ -70,6 +69,4 @@ async function bootstrap() {
   process.exit(0)
 }
 
-module.exports = schedule.scheduleJob('* 30 * * * *', function () {
-  bootstrap()
-})
+module.exports = bootstrap()

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev:web": "next dev",
+    "dev:node": "node app.js",
     "dev:server": "nodemon app.js",
     "start": "next start",
     "build": "next build",

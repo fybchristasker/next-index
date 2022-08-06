@@ -2,7 +2,6 @@ const fs = require('fs-extra')
 const util = require('util')
 const cheerio = require('cheerio')
 const _ = require('lodash')
-const schedule = require('node-schedule')
 const axios = require('axios')
 
 const TRENDING_URL = 'https://m.weibo.cn/api/container/getIndex?containerid=106003type%3D25%26t%3D3%26disable_hot%3D1%26filter_type%3Drealtimehot'
@@ -73,6 +72,4 @@ async function bootstrap() {
   process.exit(0)
 }
 
-module.exports = schedule.scheduleJob('* 5 * * * *', function () {
-  bootstrap()
-})
+module.exports = bootstrap()
