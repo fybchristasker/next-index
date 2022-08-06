@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import axios from 'axios'
-import { Chip, Tab, Skeleton, Grid, TextField, Container } from '@mui/material'
+import { Chip, Tab, Grid, TextField, Container } from '@mui/material'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
@@ -11,6 +11,8 @@ import Bilibili from '@/components/Bilibili'
 import Weibo from '@/components/Weibo'
 import Zhihu from '@/components/Zhihu'
 import Baidu from '@/components/Baidu'
+import weiboData from '@/api/weibo'
+import bilibiliData from '@/api/bilibili'
 
 const Index = () => {
   const [searchText, setSearchText] = useState('')
@@ -27,22 +29,11 @@ const Index = () => {
       window.open(`${link}${searchText}`)
     }
   }
-  const getWeibo = async () => {
-    await axios.get('https://tenapi.cn/resou/', {}).then((res) => {
-      viewSet(['news', 'weibo'], res.data.list)
-    })
-  }
   const getZhihu = async () => {
     await axios.get('https://tenapi.cn/zhihuresou').then((res) => {
       viewSet(['news', 'zhihu'], res.data.list)
     })
   }
-  const getBilibili = async () => {
-    await axios.get('https://tenapi.cn/bilihot/').then((res) => {
-      viewSet(['news', 'bilibili'], res.data.list)
-    })
-  }
-
   const getBaidu = async () => {
     await axios.get('https://tenapi.cn/baiduhot').then((res) => {
       viewSet(['news', 'baidu'], res.data.list)
@@ -57,8 +48,6 @@ const Index = () => {
 
   useEffect(() => {
     getZhihu()
-    getWeibo()
-    getBilibili()
     getBaidu()
   }, [])
 
@@ -113,35 +102,18 @@ const Index = () => {
           <Tab label="知乎热搜" value="3" icon={<img src="https://zhihu.com/favicon.ico" alt="" className="mr-1 h-4 w-4" />} iconPosition="start" className="p-0" />
           <Tab label="百度热搜" value="4" icon={<img src="https://baidu.com/favicon.ico" alt="" className="mr-1 h-4 w-4" />} iconPosition="start" className="p-0" />
         </TabList>
-        {view.news.weibo.length > 0 ? (
-          <>
-            <TabPanel value="1" className="p-0">
-              <Weibo data={view.news.weibo} />
-            </TabPanel>
-            <TabPanel value="2" className="p-0">
-              <Bilibili data={view.news.bilibili} />
-            </TabPanel>
-            <TabPanel value="3" className="p-0">
-              <Zhihu data={view.news.zhihu} />
-            </TabPanel>
-            <TabPanel value="4" className="p-0">
-              <Baidu data={view.news.baidu} />
-            </TabPanel>
-          </>
-        ) : (
-          <div className="leading-10">
-            <Skeleton sx={{ bgcolor: 'grey.50' }} />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation="wave" />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation="wave" />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation="wave" />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation="wave" />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation="wave" />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation="wave" />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation="wave" />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation="wave" />
-            <Skeleton sx={{ bgcolor: 'grey.50' }} animation={false} />
-          </div>
-        )}
+        <TabPanel value="1" className="p-0">
+          <Weibo data={weiboData} />
+        </TabPanel>
+        <TabPanel value="2" className="p-0">
+          <Bilibili data={bilibiliData} />
+        </TabPanel>
+        <TabPanel value="3" className="p-0">
+          <Zhihu data={view.news.zhihu} />
+        </TabPanel>
+        <TabPanel value="4" className="p-0">
+          <Baidu data={view.news.baidu} />
+        </TabPanel>
       </TabContext>
     </Container>
   )
