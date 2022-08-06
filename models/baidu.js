@@ -2,16 +2,16 @@ const fs = require('fs-extra')
 const _ = require('lodash')
 const axios = require('axios')
 
-const TRENDING_URL = 'https://api.zhihu.com/topstory/hot-list?limit=10&reverse_order=0'
+const TRENDING_URL = 'https://top.baidu.com/api/board?platform=web&tab=realtime'
 
 let RETRY_TIME = 5
 
 async function saveRawJson(data) {
-  const fullPath = './api/zhihu.json'
+  const fullPath = './api/baidu.json'
   const words = data.map((o) => ({
-    title: o.target.title,
-    url: o.target.url,
-    hot: o.detail_text,
+    title: o.word,
+    url: o.url,
+    hot: o.hotScore,
   }))
   let wordsAlreadyDownload = []
   try {
@@ -31,9 +31,10 @@ async function bootstrap() {
     try {
       // eslint-disable-next-line
       const { data } = await axios.get(TRENDING_URL, { timeout: 10 * 1000 })
-      const items = data.data
+      const items = data.data.cards[0].content
       if (data) {
         if (items) {
+          console.info(items, 'aaaaaaa')
           // eslint-disable-next-line
           for (const item of items) {
             // eslint-disable-next-line

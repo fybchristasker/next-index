@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
-import axios from 'axios'
 import { Chip, Tab, Grid, TextField, Container } from '@mui/material'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import dayjs from '@/utils/dayjs'
-import { useView } from '@/utils/store'
-import Bilibili from '@/components/Bilibili'
 import Layout from '@/components/Layout'
+import Bilibili from '@/components/Bilibili'
 import Weibo from '@/components/Weibo'
 import Zhihu from '@/components/Zhihu'
 import Baidu from '@/components/Baidu'
 
 const Index = () => {
   const [searchText, setSearchText] = useState('')
-  const [view, viewSet] = useView()
   const [link, setLink] = useState('https://www.google.com/search?q=')
   const [clock, setClock] = useState(dayjs().unix())
   const [value, setValue] = React.useState('1')
@@ -29,20 +26,10 @@ const Index = () => {
     }
   }
 
-  const getBaidu = async () => {
-    await axios.get('https://tenapi.cn/baiduhot').then((res) => {
-      viewSet(['news', 'baidu'], res.data.list)
-    })
-  }
-
   useEffect(() => {
     setInterval(() => {
       setClock(dayjs().unix())
     }, 1000)
-  }, [])
-
-  useEffect(() => {
-    getBaidu()
   }, [])
 
   return (
@@ -108,7 +95,7 @@ const Index = () => {
             <Zhihu />
           </TabPanel>
           <TabPanel value="4" className="p-0">
-            <Baidu data={view.news.baidu} />
+            <Baidu />
           </TabPanel>
         </TabContext>
       </Container>

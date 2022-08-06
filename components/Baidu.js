@@ -1,7 +1,9 @@
 import React from 'react'
 import { Grid } from '@mui/material'
+import data from '@/api/baidu'
 
-const Baidu = ({ data }) => {
+const Baidu = () => {
+  console.info(data)
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -9,9 +11,9 @@ const Baidu = ({ data }) => {
           <div key={v.url} className="mb-4 flex items-center justify-between">
             <a href={v.url} className="flex items-center" target="_blank" rel="noreferrer">
               <div className="w-6">{index + 1}</div>
-              {v.name}
+              {v.title}
             </a>
-            <div className="text-xs text-orange-500">{(v.hot / 10000).toFixed(1)}万</div>
+            <div className="ml-8 text-xs font-bold text-orange-500">{v.hot}</div>
           </div>
         ))}
       </Grid>
