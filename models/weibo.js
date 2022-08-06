@@ -8,7 +8,6 @@ let RETRY_TIME = 5
 
 async function saveRawJson(data) {
   const fullPath = `./api/weibo.json`
-
   const words = data.map((o) => ({
     title: o.desc,
     url: o.scheme,

@@ -12,7 +12,9 @@ const Zhihu = () => {
               <div className="w-6 text-sm text-orange-500">{index + 1}</div>
               {v.title}
             </a>
-            <div className="ml-8 text-xs font-bold text-orange-500">{v.hot}</div>
+            <div className="h-8">
+              <div className="ml-8 text-xs font-bold text-orange-500">{v.hot}</div>
+            </div>
           </div>
         ))}
       </Grid>
