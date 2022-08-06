@@ -10,7 +10,7 @@ async function saveRawJson(data) {
   const fullPath = './api/zhihu.json'
   const words = data.map((o) => ({
     title: o.target.title,
-    url: o.target.url,
+    url: `https://zhihu.com/question/${o.target.id}`,
     hot: o.detail_text,
   }))
   let wordsAlreadyDownload = []
