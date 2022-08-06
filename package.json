@@ -35,7 +35,6 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/lab": "^5.0.0-alpha.93",
     "@mui/material": "^5.9.2",
-    "@prisma/client": "^3.8.1",
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
@@ -49,9 +48,7 @@
     "nodemon": "^2.0.19",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "superagent": "^8.0.0",
-    "tailwindcss": "^3.1.5",
-    "unfetch": "^4.2.0"
+    "tailwindcss": "^3.1.5"
   },
   "devDependencies": {
     "eslint": "^8.21.0",
@@ -69,7 +66,6 @@
     "node-schedule": "^2.1.0",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "prisma": "^3.8.1",
     "stylelint": "^14.9.1"
   }
 }

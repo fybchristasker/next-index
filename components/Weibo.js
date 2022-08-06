@@ -8,10 +8,11 @@ const Weibo = ({ data }) => {
         {data.map((v, index) => (
           <div key={v.url} className="mb-4 flex items-center justify-between">
             <a href={v.url} className="flex items-center" target="_blank" rel="noreferrer">
-              <div className="w-6">{index + 1}</div>
+              <div className="w-6 text-sm text-orange-500">{index + 1}</div>
               {v.title}
+              <div className="ml-2 text-xs text-gray-500">{v.hot}</div>
             </a>
-            <div className="text-xs text-orange-500">{v.hot ? `${(v.hot / 10000).toFixed(1)}万` : ''}</div>
+            {v.icon && <img src={v.icon} alt="" className="h-8 w-8" />}
           </div>
         ))}
       </Grid>

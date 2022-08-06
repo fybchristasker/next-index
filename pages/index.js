@@ -11,7 +11,8 @@ import Bilibili from '@/components/Bilibili'
 import Weibo from '@/components/Weibo'
 import Zhihu from '@/components/Zhihu'
 import Baidu from '@/components/Baidu'
-import data from '@/api/data'
+import weiboData from '@/api/weibo'
+import bilibiliData from '@/api/bilibili'
 
 const Index = () => {
   const [searchText, setSearchText] = useState('')
@@ -33,12 +34,6 @@ const Index = () => {
       viewSet(['news', 'zhihu'], res.data.list)
     })
   }
-  const getBilibili = async () => {
-    await axios.get('https://tenapi.cn/bilihot/').then((res) => {
-      viewSet(['news', 'bilibili'], res.data.list)
-    })
-  }
-
   const getBaidu = async () => {
     await axios.get('https://tenapi.cn/baiduhot').then((res) => {
       viewSet(['news', 'baidu'], res.data.list)
@@ -53,7 +48,6 @@ const Index = () => {
 
   useEffect(() => {
     getZhihu()
-    getBilibili()
     getBaidu()
   }, [])
 
@@ -109,10 +103,10 @@ const Index = () => {
           <Tab label="百度热搜" value="4" icon={<img src="https://baidu.com/favicon.ico" alt="" className="mr-1 h-4 w-4" />} iconPosition="start" className="p-0" />
         </TabList>
         <TabPanel value="1" className="p-0">
-          <Weibo data={data} />
+          <Weibo data={weiboData} />
         </TabPanel>
         <TabPanel value="2" className="p-0">
-          <Bilibili data={view.news.bilibili} />
+          <Bilibili data={bilibiliData} />
         </TabPanel>
         <TabPanel value="3" className="p-0">
           <Zhihu data={view.news.zhihu} />
