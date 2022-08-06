@@ -2,6 +2,8 @@ name: 'auto-commit'
  
 on:
   push:
+    branches:
+      - master
   schedule:
     - cron: '*/15 * * * *'
 jobs:
