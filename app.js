@@ -12,11 +12,12 @@ app.use(async () => {
   await getBilibili()
 })
 
-schedule.scheduleJob('* 10 * * * *', function () {
+schedule.scheduleJob('* 5 * * * *', function () {
   shell.exec('git add api')
   shell.exec(`git commit -m 'feat: auto update data.json'`)
   shell.exec(`git pull`)
   shell.exec(`git push`)
+  console.info('提交成功', new Date())
 })
 
 app.listen(9000, () => {
