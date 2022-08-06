@@ -10,7 +10,7 @@ const Baidu = () => {
         {data.map((v, index) => (
           <div key={v.url} className="mb-4 flex items-center justify-between">
             <a href={v.url} className="flex items-center" target="_blank" rel="noreferrer">
-              <div className="w-6">{index + 1}</div>
+              <div className="w-6 text-sm text-orange-500">{index + 1}</div>
               {v.title}
             </a>
             <div className="h-8">
