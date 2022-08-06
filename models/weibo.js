@@ -73,6 +73,6 @@ async function bootstrap() {
   process.exit(0)
 }
 
-module.exports = schedule.scheduleJob('* 10 * * * *', function () {
+module.exports = schedule.scheduleJob('* 5 * * * *', function () {
   bootstrap()
 })

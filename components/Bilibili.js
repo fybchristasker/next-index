@@ -12,7 +12,7 @@ const Bilibili = () => {
               <div className="w-6 text-sm text-orange-500">{index + 1}</div>
               {v.title}
             </a>
-            {v.icon && <img src={v.icon} alt="" className="h-5 w-5" />}
+            <div className="h-8">{v.icon && <img src={v.icon} alt="" className="w-5" />}</div>
           </div>
         ))}
       </Grid>

@@ -13,7 +13,7 @@ const Weibo = () => {
               {v.title}
               <div className="ml-2 text-xs text-gray-500">{v.hot}</div>
             </a>
-            {v.icon && <img src={v.icon} alt="" className="h-8 w-8" />}
+            <div className="h-8">{v.icon && <img src={v.icon} alt="" className="w-8" />}</div>
           </div>
         ))}
       </Grid>

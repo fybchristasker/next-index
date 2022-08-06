@@ -17,9 +17,8 @@ schedule.scheduleJob('* 5 * * * *', function () {
   shell.exec(`git commit -m 'feat: auto update data.json'`)
   shell.exec(`git pull`)
   shell.exec(`git push`)
-  console.info('提交成功', new Date())
 })
 
 app.listen(9000, () => {
-  console.info('app is running on http://localhost:9000', new Date())
+  console.info('app is running on http://localhost:9000', Date())
 })
