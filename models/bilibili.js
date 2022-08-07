@@ -36,6 +36,9 @@ async function bootstrap() {
         if (items) {
           // eslint-disable-next-line
           await saveRawJson(items)
+          setTimeout(() => {
+            process.exit()
+          }, 10000)
         }
       }
       RETRY_TIME = 0

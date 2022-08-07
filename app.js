@@ -8,15 +8,10 @@ const getZhihu = require('./models/zhihu')
 const getBaidu = require('./models/baidu')
 
 app.use(async () => {
-  try {
-    await getWeibo()
-    await getBilibili()
-    await getZhihu()
-    await getBaidu()
-  } catch (err) {
-    console.info(err)
-  }
-  process.exit(0)
+  await getWeibo()
+  await getBilibili()
+  await getZhihu()
+  await getBaidu()
 })
 
 app.listen(9000, () => {
