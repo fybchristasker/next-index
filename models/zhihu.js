@@ -2,7 +2,7 @@ const fs = require('fs-extra')
 const _ = require('lodash')
 const axios = require('axios')
 
-const TRENDING_URL = 'https://api.zhihu.com/topstory/hot-list?limit=10&reverse_order=0'
+const TRENDING_URL = 'https://api.zhihu.com/topstory/hot-list'
 
 let RETRY_TIME = 5
 
@@ -43,7 +43,6 @@ async function bootstrap() {
       RETRY_TIME -= 1
     }
   }
-  process.exit(0)
 }
 
 module.exports = bootstrap()

@@ -45,7 +45,6 @@ async function bootstrap() {
       RETRY_TIME -= 1
     }
   }
-  process.exit(0)
 }
 
 module.exports = bootstrap()
