@@ -13,9 +13,7 @@ const Baidu = () => {
               <div className="w-6 text-sm text-orange-500">{index + 1}</div>
               {v.title}
             </a>
-            <div className="h-8">
-              <div className="ml-8 text-xs font-bold text-orange-500">{`${(v.hot / 10000).toFixed(1)}万`}</div>
-            </div>
+            <div className="flex h-8 items-center">{v.icon && <img src={v.icon} alt="" className="w-4" />}</div>
           </div>
         ))}
       </Grid>

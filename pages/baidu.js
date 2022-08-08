@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, ListItem, ListItemText, Card, Container } from '@mui/material'
 import Layout from '@/components/Layout'
-import data from '@/api/weibo'
+import data from '@/api/baidu'
 
 const Index = () => {
   return (
@@ -14,7 +14,7 @@ const Index = () => {
                 <ListItem key={v.url}>
                   <div className="mr-3 text-lg font-bold text-orange-500">{index + 1}</div>
                   <ListItemText primary={v.title} />
-                  {v.icon && <img src={v.icon} alt="" className="ml-2 w-8" />}
+                  {v.icon && <img src={v.icon} alt="" className="ml-2 w-4" />}
                 </ListItem>
               </Card>
             ))}

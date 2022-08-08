@@ -1,4 +1,8 @@
 module.exports = {
+  images: {
+    dangerouslyAllowSVG: true,
+    loader: 'custom',
+  },
   async headers() {
     return [
       {

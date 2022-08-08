@@ -12,6 +12,7 @@ async function saveRawJson(data) {
     title: o.word,
     url: o.url,
     hot: o.hotScore,
+    icon: o.hotTagImg,
   }))
   let wordsAlreadyDownload = []
   try {

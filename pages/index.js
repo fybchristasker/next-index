@@ -13,7 +13,7 @@ import Baidu from '@/components/Baidu'
 
 const Index = () => {
   const [searchText, setSearchText] = useState('')
-  const [link, setLink] = useState('https://www.google.com/search?q=')
+  const [link, setLink] = useState('http://www.baidu.com/s?wd=')
   const [clock, setClock] = useState(dayjs().unix())
   const [value, setValue] = React.useState('1')
 
@@ -48,17 +48,17 @@ const Index = () => {
           <Grid item xs={12}>
             <Chip
               size="small"
+              className="mb-2 text-xs"
+              color={link === 'http://www.baidu.com/s?wd=' ? 'primary' : 'default'}
+              label="百度"
+              onClick={() => setLink('http://www.baidu.com/s?wd=')}
+            />
+            <Chip
+              size="small"
               className="mr-2 mb-2 text-xs"
               color={link === 'https://www.google.com/search?q=' ? 'primary' : 'default'}
               label="谷歌"
               onClick={() => setLink('https://www.google.com/search?q=')}
-            />
-            <Chip
-              size="small"
-              className="mb-2 text-xs"
-              color={link === ' http://www.baidu.com/s?wd=' ? 'primary' : 'default'}
-              label="百度"
-              onClick={() => setLink(' http://www.baidu.com/s?wd=')}
             />
           </Grid>
           <Grid item xs={12} className="flex items-center">
