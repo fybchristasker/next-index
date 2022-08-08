@@ -1,9 +1,8 @@
 import React from 'react'
 import { Grid } from '@mui/material'
-import data from '@/api/zhihu'
+import data from '@/api/toutiao'
 
-const Zhihu = () => {
-  console.info(data)
+const Toutiao = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -12,10 +11,9 @@ const Zhihu = () => {
             <a href={v.url} className="flex items-center" target="_blank" rel="noreferrer">
               <div className="w-6 text-sm text-orange-500">{index + 1}</div>
               {v.title}
+              <div className="ml-2 text-xs text-gray-500">{v.hot}</div>
             </a>
-            <div className="h-8">
-              <div className="ml-2 w-max text-xs font-bold text-orange-500">{v.hot}</div>
-            </div>
+            <div className="flex h-8 items-center">{v.icon && <img src={v.icon} alt="" className="w-6" />}</div>
           </div>
         ))}
       </Grid>
@@ -23,4 +21,4 @@ const Zhihu = () => {
   )
 }
 
-export default Zhihu
+export default Toutiao

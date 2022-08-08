@@ -8,7 +8,7 @@ import dayjs from '@/utils/dayjs'
 import Layout from '@/components/Layout'
 import Bilibili from '@/components/Bilibili'
 import Weibo from '@/components/Weibo'
-import Zhihu from '@/components/Zhihu'
+import Toutiao from '@/components/Toutiao'
 import Baidu from '@/components/Baidu'
 
 const Index = () => {
@@ -33,10 +33,9 @@ const Index = () => {
   }, [])
 
   return (
-    <>
-      <Layout />
+    <Layout>
       <Container maxWidth="md">
-        <div className="pt-32 text-center	text-xl text-stone-400">
+        <div className="text-md pt-24	text-center text-stone-400">
           {dayjs(clock * 1000)
             .format('YYYY-MM-DD dddd')
             .toUpperCase()}
@@ -45,7 +44,7 @@ const Index = () => {
         <div className="mt-4 flex items-center justify-center font-bold">
           <div className="text-center text-7xl text-stone-600 md:text-9xl">{dayjs(clock * 1000).format('h:mm:ss')}</div>
         </div>
-        <Grid container className="mt-12">
+        <Grid container className="mt-6">
           <Grid item xs={12}>
             <Chip
               size="small"
@@ -80,26 +79,26 @@ const Index = () => {
         </Grid>
         <TabContext value={value}>
           <TabList onChange={handleChange} className="mb-6">
-            <Tab label="B站热搜" value="1" icon={<img src="https://bilibili.com/favicon.ico" alt="" className="mr-1 h-4 w-4" />} iconPosition="start" className="p-0" />
-            <Tab label="微博热搜" value="2" icon={<img src="https://weibo.com/favicon.ico" alt="" className="mr-1 h-4 w-4" />} iconPosition="start" className="p-0" />
-            <Tab label="知乎热搜" value="3" icon={<img src="https://zhihu.com/favicon.ico" alt="" className="mr-1 h-4 w-4" />} iconPosition="start" className="p-0" />
-            <Tab label="百度热搜" value="4" icon={<img src="https://baidu.com/favicon.ico" alt="" className="mr-1 h-4 w-4" />} iconPosition="start" className="p-0" />
+            <Tab label="微博" value="1" icon={<img src="https://weibo.com/favicon.ico" alt="" className="mr-1 h-4" />} iconPosition="start" className="p-0" />
+            <Tab label="B站" value="2" icon={<img src="https://bilibili.com/favicon.ico" alt="" className="mr-1 h-4" />} iconPosition="start" className="p-0" />
+            <Tab label="头条" value="3" icon={<img src="https://toutiao.com/favicon.ico" alt="" className="mr-1 h-4" />} iconPosition="start" className="p-0" />
+            <Tab label="百度" value="4" icon={<img src="https://baidu.com/favicon.ico" alt="" className="mr-1 h-4" />} iconPosition="start" className="p-0" />
           </TabList>
           <TabPanel value="1" className="p-0">
-            <Bilibili />
-          </TabPanel>
-          <TabPanel value="2" className="p-0">
             <Weibo />
           </TabPanel>
+          <TabPanel value="2" className="p-0">
+            <Bilibili />
+          </TabPanel>
           <TabPanel value="3" className="p-0">
-            <Zhihu />
+            <Toutiao />
           </TabPanel>
           <TabPanel value="4" className="p-0">
             <Baidu />
           </TabPanel>
         </TabContext>
       </Container>
-    </>
+    </Layout>
   )
 }
 

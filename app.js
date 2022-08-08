@@ -6,8 +6,10 @@ const getWeibo = require('./models/weibo')
 const getBilibili = require('./models/bilibili')
 const getZhihu = require('./models/zhihu')
 const getBaidu = require('./models/baidu')
+const getToutiao = require('./models/toutiao')
 
 app.use(async () => {
+  await getToutiao()
   await getWeibo()
   await getBilibili()
   await getZhihu()

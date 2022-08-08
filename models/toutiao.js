@@ -2,18 +2,18 @@ const fs = require('fs-extra')
 const _ = require('lodash')
 const axios = require('axios')
 
-const TRENDING_URL = 'https://api.zhihu.com/topstory/hot-list'
+const TRENDING_URL = 'https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc'
 
 let RETRY_TIME = 5
 
 async function saveRawJson(data) {
-  const fullPath = './api/zhihu.json'
+  const fullPath = './api/toutiao.json'
   const words = data.map((o) => ({
-    title: o.target.title,
-    url: `https://zhihu.com/question/${o.target.id}`,
-    hot: o.detail_text,
-    description: o.target.excerpt,
-    cover: o.children[0].thumbnail,
+    title: o.Title,
+    url: o.Url,
+    hot: o.HotValue,
+    icon: o.LabelUri.url,
+    cover: o.Image.url,
   }))
   let wordsAlreadyDownload = []
   try {
