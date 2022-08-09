@@ -11,7 +11,7 @@ const Weibo = () => {
             <a href={v.url} className="flex items-center" target="_blank" rel="noreferrer">
               <div className="w-6 text-sm text-orange-500">{index + 1}</div>
               {v.title}
-              <div className="ml-2 text-xs text-gray-500">{v.hot}</div>
+              <div className="ml-2 hidden text-xs text-gray-500 md:block">{v.hot}</div>
             </a>
             <div className="flex h-8 items-center">{v.icon && <img src={v.icon} alt="" className="w-8" />}</div>
           </div>
