@@ -10,7 +10,7 @@ const Index = () => {
       <Container maxWidth="md" className="p-0">
         <Grid container className="pt-24 md:pt-36">
           <Grid item xs={12}>
-            <Card variant="outlined">
+            <Card variant="outlined" className="bg-white text-black antialiased dark:bg-gray-900 dark:text-white">
               <List>
                 {data.map((v, index) => (
                   <div key={v.url}>
@@ -19,7 +19,7 @@ const Index = () => {
                       <ListItemText
                         primary={<div className="mb-1 font-bold">{v.title}</div>}
                         secondary={
-                          <div className="leading-8">
+                          <div className="bg-white leading-8 text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-300">
                             <div className="truncate text-xs">{v.description}</div>
                             <div className="flex items-center font-bold text-gray-400">
                               <LocalFireDepartmentIcon className="text-sm" />
