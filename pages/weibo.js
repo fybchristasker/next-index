@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Grid, Divider, List, ListItem, ListItemText, Card, Container } from '@mui/material'
+import axios from 'axios'
 import Layout from '@/components/Layout'
 import data from '@/api/weibo'
 
 const Index = () => {
+  useEffect(() => {
+    axios.get('http://localhost:9000/weibo')
+  }, [])
+
   return (
     <Layout>
       <Container maxWidth="md" className="p-0">
