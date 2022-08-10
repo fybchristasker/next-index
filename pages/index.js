@@ -74,12 +74,8 @@ const Index = () => {
               onKeyPress={onKeyPress}
               size="small"
               InputProps={{
-                startAdornment: (
-                  <div className="w-12 bg-white text-black antialiased dark:bg-gray-900 dark:text-white">{link === 'https://www.google.com/search?q=' ? '谷歌' : '百度'}</div>
-                ),
-                endAdornment: (
-                  <SearchIcon className="cursor-pointer bg-white text-black antialiased dark:bg-gray-900 dark:text-white" onClick={() => window.open(`${link}${searchText}`)} />
-                ),
+                startAdornment: <div className="w-12 text-black antialiased dark:text-white">{link === 'https://www.google.com/search?q=' ? '谷歌' : '百度'}</div>,
+                endAdornment: <SearchIcon className="cursor-pointer text-black antialiased dark:text-white" onClick={() => window.open(`${link}${searchText}`)} />,
               }}
               fullWidth
               onChange={(e) => setSearchText(e.target.value)}
@@ -93,28 +89,28 @@ const Index = () => {
               value="1"
               icon={<img src="https://weibo.com/favicon.ico" alt="" className="mr-1 h-4" />}
               iconPosition="start"
-              className="bg-white p-0 text-black antialiased dark:bg-gray-900 dark:text-white"
+              className="p-0 text-black antialiased dark:text-white"
             />
             <Tab
               label="B站"
               value="2"
               icon={<img src="https://bilibili.com/favicon.ico" alt="" className="mr-1 h-4" />}
               iconPosition="start"
-              className="bg-white p-0 text-black antialiased dark:bg-gray-900 dark:text-white"
+              className="p-0 text-black antialiased dark:text-white"
             />
             <Tab
               label="头条"
               value="3"
               icon={<img src="https://toutiao.com/favicon.ico" alt="" className="mr-1 h-4" />}
               iconPosition="start"
-              className="bg-white p-0 text-black antialiased dark:bg-gray-900 dark:text-white"
+              className="p-0 text-black antialiased dark:text-white"
             />
             <Tab
               label="百度"
               value="4"
               icon={<img src="https://baidu.com/favicon.ico" alt="" className="mr-1 h-4" />}
               iconPosition="start"
-              className="bg-white p-0 text-black antialiased dark:bg-gray-900 dark:text-white"
+              className="p-0 text-black antialiased dark:text-white"
             />
           </TabList>
           <TabPanel value="1" className="p-0">
