@@ -15,20 +15,10 @@ const Layout = ({ children }) => {
             <div className="font-mono text-lg font-bold">白羽</div>
           </div>
         </div>
-        <div className="absolute right-12 top-5 sm:right-36 md:right-48">
-          {[
-            ['微博', '/weibo'],
-            ['B站', '/bilibili'],
-            ['百度', '/baidu'],
-            ['知乎', '/zhihu'],
-            ['头条', '/toutiao'],
-          ].map((v) => (
-            <span role="presentation" key={v} className="mr-4 cursor-pointer text-sm font-medium hover:text-gray-600" onClick={() => router.push(v[1])}>
-              {v[0]}
-            </span>
-          ))}
-        </div>
-        <div className="absolute right-4 top-4 sm:right-24 md:right-36">
+        <div className="absolute right-6 top-4 flex items-center sm:right-36 md:right-48">
+          <div role="presentation" className="cursor-pointer font-bold hover:text-gray-500" onClick={() => router.push('/weibo')}>
+            全部热搜
+          </div>
           <ThemeSwitch />
         </div>
       </Container>
