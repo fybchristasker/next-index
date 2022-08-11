@@ -8,6 +8,7 @@ const initialState = {
     weibo: [],
     baidu: [],
     zhihu: [],
+    toutiao: [],
   },
 }
 
