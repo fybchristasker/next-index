@@ -41,7 +41,6 @@ async function bootstrap() {
       }
       RETRY_TIME = 0
     } catch (err) {
-      console.info(err.message)
       RETRY_TIME -= 1
     }
   }

@@ -3,7 +3,6 @@ import { Grid } from '@mui/material'
 import data from '@/api/zhihu'
 
 const Zhihu = () => {
-  console.info(data)
   return (
     <Grid container>
       <Grid item xs={12}>

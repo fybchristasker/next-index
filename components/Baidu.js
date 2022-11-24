@@ -3,7 +3,6 @@ import { Grid } from '@mui/material'
 import data from '@/api/baidu'
 
 const Baidu = () => {
-  console.info(data)
   return (
     <Grid container>
       <Grid item xs={12}>
