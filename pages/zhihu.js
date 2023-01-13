@@ -14,10 +14,14 @@ const Index = () => {
               <List>
                 {data.map((v, index) => (
                   <div key={v.url}>
-                    <ListItem className="cursor-pointer rounded-none" onClick={() => window.open(v.url)}>
+                    <ListItem className="rounded-none">
                       <div className="text-md mr-3 w-4 font-bold text-orange-500">{index + 1}</div>
                       <ListItemText
-                        primary={<div className="mb-1 font-bold">{v.title}</div>}
+                        primary={
+                          <a href={v.url} target="_blank" rel="noreferrer" className="mb-1 font-bold">
+                            {v.title}
+                          </a>
+                        }
                         secondary={
                           <div className="bg-white leading-8 text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-300">
                             <div className="truncate text-xs">{v.description}</div>

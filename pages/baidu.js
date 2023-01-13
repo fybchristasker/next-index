@@ -13,9 +13,15 @@ const Index = () => {
               <List>
                 {data.map((v, index) => (
                   <div key={v.url}>
-                    <ListItem className="cursor-pointer rounded-none" onClick={() => window.open(v.url)}>
+                    <ListItem className="rounded-none">
                       <div className="text-md mr-3 w-4 font-bold text-orange-500">{index + 1}</div>
-                      <ListItemText primary={v.title} />
+                      <ListItemText
+                        primary={
+                          <a href={v.url} target="_blank" rel="noreferrer">
+                            {v.title}
+                          </a>
+                        }
+                      />
                       {v.icon && <img src={v.icon} alt="" className="w-4" />}
                     </ListItem>
                     <Divider />
