@@ -5,6 +5,7 @@
   "scripts": {
     "dev:web": "next dev",
     "dev:node": "node app.js",
+    "dev:koa": "supervisor --harmony app",
     "dev:server": "nodemon app.js",
     "start": "next start",
     "build": "next build",
@@ -46,12 +47,14 @@
     "koa-router": "^12.0.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
+    "mysql": "^2.18.1",
     "next": "12.1.6",
     "next-themes": "^0.2.0",
     "nodemon": "^2.0.19",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "shelljs": "^0.8.5",
+    "supervisor": "^0.12.0",
     "tailwindcss": "^3.1.5"
   },
   "devDependencies": {
