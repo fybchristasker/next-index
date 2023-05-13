@@ -43,6 +43,7 @@
     "dayjs": "^1.11.4",
     "fs-extra": "^10.1.0",
     "immer": "^9.0.15",
+    "isomorphic-unfetch": "^4.0.2",
     "koa": "^2.13.4",
     "koa-router": "^12.0.0",
     "lodash": "^4.17.21",
@@ -55,6 +56,7 @@
     "react-dom": "17.0.2",
     "shelljs": "^0.8.5",
     "supervisor": "^0.12.0",
+    "swr": "^2.1.5",
     "tailwindcss": "^3.1.5"
   },
   "devDependencies": {

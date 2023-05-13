@@ -1,9 +1,21 @@
-import React from 'react'
-import { Grid, List, ListItem, ListItemText, Card, Container, Divider } from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import { Grid, Divider, List, ListItem, ListItemText, Card, Container } from '@mui/material'
 import Layout from '@/components/Layout'
-import data from '@/api/toutiao'
+import { get } from '@/utils/request'
 
 const Index = () => {
+  const [data, setData] = useState([])
+
+  const getData = async () => {
+    const res = await get('toutiao')
+    if (res) {
+      setData(res.data)
+    }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <Layout>
       <Container maxWidth="md" className="p-0">

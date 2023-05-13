@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid } from '@mui/material'
-import data from '@/api/weibo'
+import { get } from '@/utils/request'
 
 const Weibo = () => {
+  const [data, setData] = useState([])
+
+  const getData = async () => {
+    const res = await get('weibo')
+    if (res) {
+      setData(res.data)
+    }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <Grid container>
       <Grid item xs={12}>
