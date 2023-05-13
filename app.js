@@ -5,8 +5,6 @@ const Router = require('koa-router')
 
 const router = new Router()
 
-const weibo = require('./api/weibo.json')
-
 app.use(async (ctx, next) => {
   ctx.set('Access-Control-Allow-Origin', '*')
   ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild')
@@ -18,25 +16,13 @@ app.use(async (ctx, next) => {
   }
 })
 
-router.get('/weibo', async (ctx) => {
-  ctx.body = weibo
-})
-
 app.use(router.routes()).use(router.allowedMethods())
 
-const getWeibo = require('./models/weibo')
-const getBilibili = require('./models/bilibili')
-const getZhihu = require('./models/zhihu')
-const getBaidu = require('./models/baidu')
-const getToutiao = require('./models/toutiao')
-
-app.use(async () => {
-  await getToutiao()
-  await getWeibo()
-  await getBilibili()
-  await getZhihu()
-  await getBaidu()
-})
+app.use(require('./routers/baidu').routes())
+app.use(require('./routers/toutiao').routes())
+app.use(require('./routers/bilibili').routes())
+app.use(require('./routers/zhihu').routes())
+app.use(require('./routers/weibo').routes())
 
 app.listen(9000, () => {
   console.info('app is running on http://localhost:9000', Date())

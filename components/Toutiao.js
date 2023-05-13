@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid } from '@mui/material'
-import data from '@/api/toutiao'
+import { get } from '@/utils/request'
 
 const Toutiao = () => {
+  const [data, setData] = useState([])
+
+  const getData = async () => {
+    const res = await get('toutiao')
+    if (res) {
+      setData(res.data)
+    }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <Grid container>
       <Grid item xs={12}>

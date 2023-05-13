@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Divider, List, ListItem, ListItemText, Card, Container } from '@mui/material'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
 import Layout from '@/components/Layout'
-import data from '@/api/zhihu'
+import { get } from '@/utils/request'
 
 const Index = () => {
+  const [data, setData] = useState([])
+
+  const getData = async () => {
+    const res = await get('zhihu')
+    if (res) {
+      setData(res.data)
+    }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <Layout>
       <Container maxWidth="md" className="p-0">
