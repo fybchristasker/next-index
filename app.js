@@ -24,6 +24,6 @@ app.use(require('./routers/bilibili').routes())
 app.use(require('./routers/zhihu').routes())
 app.use(require('./routers/weibo').routes())
 
-app.listen(9000, () => {
-  console.info('app is running on http://localhost:9000', Date())
+app.listen(80, () => {
+  console.info('app is running on http://localhost:80', Date())
 })

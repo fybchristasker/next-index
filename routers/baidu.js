@@ -1,6 +1,6 @@
-const router = require('koa-router')()
+const Router = require('koa-router')
 
-const newRouter = router({
+const newRouter = Router({
   prefix: '/api/v1',
 })
 const Koa = require('koa')
@@ -22,4 +22,4 @@ newRouter.get('/baidu', (ctx) => {
   }
 })
 
-module.exports = router
+module.exports = newRouter

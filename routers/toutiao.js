@@ -1,4 +1,9 @@
-const router = require('koa-router')()
+const Router = require('koa-router')
+
+const newRouter = Router({
+  prefix: '/api/v1',
+})
+
 const Koa = require('koa')
 const data = require('../api/toutiao.json')
 
@@ -10,8 +15,12 @@ app.use(async () => {
   await getData()
 })
 
-router.get('/toutiao', (ctx) => {
-  ctx.body = JSON.stringify({ data })
+newRouter.get('/toutiao', (ctx) => {
+  if (data) {
+    ctx.body = JSON.stringify({ data })
+  } else {
+    ctx.body = JSON.stringify({ data: [] })
+  }
 })
 
-module.exports = router
+module.exports = newRouter
