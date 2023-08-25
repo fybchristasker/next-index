@@ -6,6 +6,7 @@ const headers = () => {
   return {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'OPTIONS, GET, POST, PUT, PATCH, DELETE',
+    'Access-Control-Allow-Headers': 'Content-Type',
     Accept: 'application/json',
     'Content-Type': 'application/json',
   }
